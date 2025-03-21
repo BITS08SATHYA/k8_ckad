@@ -1,0 +1,3 @@
+# To create a cluster
+kind create cluster --config file-name
+
