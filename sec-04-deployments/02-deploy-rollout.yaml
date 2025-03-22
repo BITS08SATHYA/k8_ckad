@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-service-deploy
+  annotations:
+    kubernetes.io/change-cause: "deploying v3"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: order-service
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: order-service
+    spec:
+      containers:
+      - image: vinsdocker/k8s-app:v3
+        name: order-service
+        ports:
+        - name: "app-port"
+          containerPort: 80
